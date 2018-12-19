@@ -1,0 +1,51 @@
+﻿@model Scoreboards.Models.NewGame.NewGameIndexModel
+
+@{
+    ViewData["Title"] = "Game List Page";
+}
+
+<div class="row container home-winners-list">
+    <div class="row page-header">
+        <h2>Registered Games</h2>
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <label>Game Logo</label>
+                    </th>
+
+                    <th>
+                        <label>Game Name</label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var game in Model.gameList)
+                {
+                <tr>
+                    <td>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                            @game.GameLogo
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                            @game.GameName
+                        </div>
+                    </td>
+                    <td>
+                        <div style="padding-right:3em" class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                            <button> Edit </button>
+                        </div>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                            <button> Delete </button>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

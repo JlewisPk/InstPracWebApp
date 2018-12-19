@@ -1,0 +1,73 @@
+﻿@model Scoreboards.Models.Home.HomeIndexModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    string active = "0";
+    int i = 1;
+}
+    <script type="text/javascript">
+    function doAction(userName)
+    {
+        document.getElementById("pic").innerHTML = userName;
+        @*window.location.href = "@Url.Action("Privacy", "Home", Model)";*@
+    }
+    </script>
+
+    <div class="row container home-winners-list">
+        <div class="row page-header">
+            <h2>Latest Games</h2>
+        </div>
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <label>Rank</label>
+                        </th>
+                        <th>
+                            <label>Name</label>
+                        </th>
+                        <th>
+                            <label>Win/Lose</label>
+                        </th>
+                        <th>
+                            <label>Win Ratio</label>
+                        </th>
+                        <th>
+                            <label>History</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var game in Model.UsersData)
+                    {
+                        <tr>
+                            <td>
+                                <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                    <a onclick="doAction(@game.UserName)">@i</a>
+                                </div>
+                            </td>
+                            <td>
+                                @game.UserName
+                            </td>
+                            <td>
+                                <div style="white-space:nowrap;" class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                    @game.Wins W  -  @game.Loses L
+                                </div>
+                            </td>
+                            <td>
+                                <div style="white-space:nowrap;" class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                    @game.Ratio %
+                                </div>
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+            <div>
+                    <p id="pic">@active</p>
+            </div>
+        </div>
+    </div>
+
